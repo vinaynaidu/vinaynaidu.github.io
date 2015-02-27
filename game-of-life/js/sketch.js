@@ -66,7 +66,6 @@ function draw() {
         var gen_colour_b = heatmap_colours[gen][2];
 
         // live cell
-        //fill(206,201,254);
         fill(gen_colour_r,gen_colour_g,gen_colour_b);
       }
       else {
