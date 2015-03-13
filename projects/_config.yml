@@ -1,0 +1,17 @@
+# Site settings
+title: Musings of a curious coder
+header-img: img/home-bg.jpg
+email: hello@vinaynaidu.com
+description: "Musings of a curious coder"
+baseurl: ""
+url: "http://vinaynaidu.com"
+twitter_username: padfootprong
+github_username:  vinaynaidu
+#facebook_username:  IronSummitMedia
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
