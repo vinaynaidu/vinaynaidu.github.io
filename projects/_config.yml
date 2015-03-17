@@ -1,13 +1,12 @@
 # Site settings
-title: Musings of a curious coder
+title: Home
 header-img: img/home-bg.jpg
 email: hello@vinaynaidu.com
-description: "Musings of a curious coder"
+description: "Welcome to the musings of a curious coder"
 baseurl: ""
 url: "http://vinaynaidu.com"
 twitter_username: padfootprong
 github_username:  vinaynaidu
-#facebook_username:  IronSummitMedia
 
 # Build settings
 markdown: kramdown
