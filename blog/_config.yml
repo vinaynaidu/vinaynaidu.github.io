@@ -9,7 +9,8 @@ twitter_username: padfootprong
 github_username:  vinaynaidu
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
+markdown: redcarpet
 highlighter: pygments
 permalink: pretty
 paginate: 5
