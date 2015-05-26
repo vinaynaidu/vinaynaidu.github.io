@@ -1,0 +1,125 @@
+<html>
+	<head>
+
+		<style type="text/css">
+
+			body {
+				margin: 5px;
+				background: #ccc;
+			}
+
+			#log {
+				height: 30px;
+				width: 100px;
+				border: 1px solid #ddd;
+				position: fixed;
+				top:10px;
+				left: 100%;
+				margin-left: -115px;
+				background: #ddd;
+				padding-top: 3px;
+				padding-left: 5px;
+			}
+		</style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	</head>
+	<body>
+
+		<div id="log"></div>
+
+		<div id="gbh"></div>
+
+		<script type="text/javascript">
+
+			var justAppeared=false;
+			var lastmousex=-1;
+			var lastmousey=-1;
+			var mousetravel = 0;
+			var pageWidth = $(window).width();
+			var pageHeight = $(window).height();
+			var yOffset= $(window).scrollTop();
+			var mousey, mousex;
+
+			var exitWindow=resizeExitWindow('medium');
+
+			document.title = pageHeight;
+
+			$(function() {
+				fillUpGbh();
+				log("waiting...");
+
+				mouseMoveHandler();
+				mouseLeaveHandler();
+				pageScrollHandler();
+
+			});
+
+			/* Exit intent popup logic
+			--------------------------------*/
+			function mouseMoveHandler(){
+				$(document).mousemove(function(e) {
+					mousex = e.pageX;
+					mousey = e.pageY;
+
+					if(lastmousex > -1) {
+						mousetravel = Math.max(Math.abs(mousex-lastmousex), Math.abs(mousey-lastmousey));
+						log(mousetravel);
+					}
+
+					lastmousex = mousex;
+					lastmousey = mousey;
+				});
+			}
+
+			function mouseLeaveHandler() {
+				$(document).on("mouseleave", function() {
+					var yOffset = $(window).scrollTop();
+
+					if((mousey < yOffset+20 && mousetravel > 9  && mousex < exitWindow) || 
+						 (mousey < yOffset+20 && mousetravel > 9  && mousex > pageWidth-exitWindow)) {
+						//show exit intent popup
+						log("exiting!");
+					}
+
+				});
+			}
+
+			function resizeExitWindow(exitWindowArea){
+				var tempNumber;
+				if(exitWindowArea == 'tiny'){tempNumber=parseInt(pageWidth/12,10);}
+				else if(exitWindowArea == 'small'){tempNumber=parseInt(pageWidth/6,10);}
+				else if(exitWindowArea == 'medium'){tempNumber=parseInt(pageWidth/3,10);}
+				else if (exitWindowArea == 'large'){tempNumber=parseInt(pageWidth/2,10);}
+				return tempNumber;
+			}
+
+			/* Page scroll popup logic
+			--------------------------------*/
+			function pageScrollHandler() {
+				$(document).scroll(function() {
+					var yOffset = $(window).scrollTop();
+					var scrollPercentage = yOffset / pageHeight * 100;
+
+					if(pageHeight > 100 && scrollPercentage > 70) {
+						log("scrolled!");
+					} else {
+						log("waiting...");
+					}
+
+				})
+			}
+
+			function fillUpGbh() {
+				for(var i = 0; i < 100; i++) {
+					$("#gbh").append("-<br />");
+				}
+			}
+
+			function log(m) {
+				$("#log").text(m);
+			}
+		</script>
+	</body>
+</html>
