@@ -1,0 +1,18 @@
+# ignore jekyll build directory
+/_site
+
+# ignore private/secret files
+*.der
+*.key
+*.pem
+
+# --------------------------------------------------------
+# BEGIN Explictly Allowed Files (i.e. do NOT ignore these)
+# --------------------------------------------------------
+
+# track these files, if they exist
+!.editorconfig
+!.env.example
+!.gitignore
+!.nvmrc
+!.phpcs.xml.dist

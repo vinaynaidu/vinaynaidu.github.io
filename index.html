@@ -31,9 +31,9 @@
   <script type="text/javascript">
     // Redirect to https if the location is http. This is required for the angular routes to work because the baseHref
     // is set to https
-    let loc = window.location.href+'';
-    if (loc.indexOf('http://')==0){
-        window.location.href = loc.replace('http://','https://');
+    let loc = window.location.href + '';
+    if (loc.indexOf('http://') == 0) {
+      window.location.href = loc.replace('http://', 'https://');
     }
   </script>
 
